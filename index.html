@@ -30,10 +30,8 @@
     <main class="main-content container">
 
         <div class="booking-content">
-            <h1>Mega City Bus</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book.</p>
+            <h1>MEGA CITY BUS</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam incidunt molestias, delectus sapiente nobis veritatis laboriosam temporibus dolorem explicabo ex in voluptatum dolore ullam ipsam nisi consequuntur asperiores dignissimos voluptate.</p>
         </div>
 
 
@@ -43,11 +41,11 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                        <input class="inp-style" type="text" name="" placeholder="Sylhet">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                        <input class="inp-style" type="text" name="" placeholder="Cox's Bazar">
                 </div>
             </div>
 
@@ -115,6 +113,55 @@
 
     <!--Thank You-->
 </body>
-<script src="ticket.js"></script>
+<script>
+    function handleTicketChange(ticketCount){
+    const firstClassInput = document.getElementById('firstClassCount');
+   const firstClassCount = parseInt(firstClassInput.value);
+   let firstClassNewCount = firstClassCount;
+   if(ticketCount == true){
+       firstClassNewCount = firstClassCount + 1;
+   }
+    if(ticketCount == false && firstClassCount >0){
+        firstClassNewCount = firstClassCount - 1;
+    }
+
+   firstClassInput.value = firstClassNewCount;
+   const firstClassTotal = firstClassNewCount * 150;
+  calculateTotal();
+  getInputValue();
+  
+
+
+}
+function EconomyClassHandle(ticketCount2){
+    const economyClassInput = document.getElementById('economyClassCount');
+    const economyClassCount = parseInt(economyClassInput.value);
+   let economyClassNewCount = economyClassCount;
+   if(ticketCount2 == true){
+       economyClassNewCount = economyClassCount + 1;
+   }
+    if(ticketCount2 == false && economyClassCount >0){
+       economyClassNewCount = economyClassCount - 1;
+    }
+    economyClassInput.value = economyClassNewCount;
+   const economyClassTotal = economyClassNewCount * 100;
+   calculateTotal();
+   getInputValue();
+   
+   
+}
+function calculateTotal(){
+   const  firstInput= document.getElementById('firstClassCount');
+   const firstCount = parseInt(firstInput.value);
+   const economyInput = document.getElementById('economyClassCount');
+   const economyCount = parseInt(economyInput.value);
+   const totalPrice = firstCount*150 + economyCount*100;
+   document.getElementById('subTotal').innerText ='$' + totalPrice;
+   const tax = totalPrice * 0.1;
+   document.getElementById('tax').innerText ='$' + tax;
+ const total = totalPrice + tax;
+ document.getElementById('total').innerText = '$' + total;
+}
+</script>
 
 </html>
